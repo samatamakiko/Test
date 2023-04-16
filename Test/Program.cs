@@ -2,29 +2,33 @@
 
 using Microsoft.VisualBasic.FileIO;
 using System;
-using System.IO;
-using System.Text;
 
-class Program
+
+//型変換やり方４種類ある
+//1,キャスト　変数の前に（変換したい型）を書く
+
+class CS10
 {
-    public static void Main()
+    public static void Main(string[] args)
     {
-        var a = 1.0;
-        var b = a / 5.0;
-        Console.WriteLine(b.ToString());
+        double d1 = 1.9d;
+        int aaa = (int)d1;
+        Console.WriteLine(aaa);
 
-        //varは型を自動で推測してくれるので小数点ないとint型になる
-        //0.2と出したのであれば小数点つける
+        //2, パースのやり方 文字を数値にしたいとき使う
+        string value = "10";
+        int intValue = int.Parse(value);
+        Console.WriteLine(intValue);
 
+        //3,トライパースのやり方
+        string bbb = "10";
+        int result; //outの後に出力される変数を入れてね、という意味。事前に宣言する必要あり。
+        Console.WriteLine( int.TryParse(bbb, out result));
+        Console.WriteLine(result);
+        //トライパースはboolで返すのが基本なのか・・・？
 
-        var c = 1.0;
-        var d = 0.0;
-        d = c / 13.0f;
-        Console.WriteLine(b * 13);
-
-        //dが定義されてないまま代入している
-        // 1の出し方はちょっと分からない・・・
-
+        //4,コンバート
+        string ccc = "10";
+        int cccValue = Convert.ToInt32(ccc);
     }
 }
-
